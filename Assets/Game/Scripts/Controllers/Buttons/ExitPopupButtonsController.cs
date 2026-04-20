@@ -4,11 +4,9 @@ namespace Game
 {
     public sealed class ExitPopupButtonsController : MonoBehaviour
     {
-        private PanelState _state;
-
-        private void Awake()
+        public void Exit()
         {
-            _state=OR.Get<PanelState>();
+            Application.Quit();
         }
     }
 }

@@ -17,8 +17,8 @@ namespace Game
         public void Register(PanelView panelView)
         {
             Assert.IsNotNull(panelView);
-            
-            _panelMap.Add(panelView.Config, panelView.gameObject);
+
+            _panelMap[panelView.Config]=panelView.gameObject;
             panelView.gameObject.SetActive(false);
         }
 
@@ -69,7 +69,7 @@ namespace Game
             if (_activeMainPanel == null) return;
             var previous=_activeMainPanel;
             _activeMainPanel = null;
-            OnPopupChanged?.Invoke(previous,null);
+            OnMainChanged?.Invoke(previous,null);
 
         }
 
