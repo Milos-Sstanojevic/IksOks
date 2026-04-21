@@ -25,6 +25,11 @@ namespace Game
             var sceneService=new SceneService();
             OR.Set(sceneService);
             OR.Set(new ThemeState());
+            var boardState=new BoardState();
+            OR.Set(boardState);
+            var turnState=new TurnState();
+            OR.Set(turnState);
+            OR.Set(new GameplayController(boardState, turnState));
 
             if (SceneManager.GetActiveScene().name == "Bootstrap")
                 sceneService.LoadMainMenu();
