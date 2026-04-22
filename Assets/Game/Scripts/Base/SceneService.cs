@@ -13,8 +13,15 @@ namespace Game
         {
             _state=OR.Get<PanelState>();
             _gameplayState=OR.Get<GameplayState>();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if(scene.name==GameSceneName)
+                _gameplayState.StartGame();
+        }
+        
         public void LoadMainMenu()
         {
             _state.Reset();
@@ -25,7 +32,7 @@ namespace Game
         {
             _state.Reset();
             SceneManager.LoadScene(GameSceneName);
-            _gameplayState.StartGame();
+            // _gameplayState.StartGame();
         }
     }
 }
