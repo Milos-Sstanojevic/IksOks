@@ -5,6 +5,7 @@ namespace Game
 {
     public sealed class AppInstall : MonoBehaviour
     {
+        [SerializeField] private ThemeState.ThemeId initialTheme;
         private static bool _installed;
         
         private void Awake()
@@ -21,16 +22,26 @@ namespace Game
             
             OR.Init();
             
+            var saveService=new SaveService();
+            var themeState = new ThemeState(saveService.LoadTheme(initialTheme));
+            var statsState = new StatsState(saveService.LoadStats());
+            saveService.Bind(themeState);
+            saveService.Bind(statsState);
+            
+            OR.Set(saveService);
+            OR.Set(themeState);
+            OR.Set(statsState);
             OR.Set(new PanelState());
-            var sceneService=new SceneService();
-            OR.Set(sceneService);
-            OR.Set(new ThemeState());
             var boardState=new BoardState();
             OR.Set(boardState);
             var turnState=new TurnState();
             OR.Set(turnState);
-            OR.Set(new GameplayController(boardState, turnState));
-
+            OR.Set(new GameplayState(boardState, turnState));
+            var sceneService=new SceneService();
+            OR.Set(sceneService);
+            OR.Set(new GameHUDState());
+            
+            
             if (SceneManager.GetActiveScene().name == "Bootstrap")
                 sceneService.LoadMainMenu();
       

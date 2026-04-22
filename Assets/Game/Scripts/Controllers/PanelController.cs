@@ -16,6 +16,8 @@ namespace Game
             _state = OR.Get<PanelState>();
             Assert.IsNotNull(_state);
             Assert.IsNotNull(defaultPanelView);
+            Assert.IsNotNull(defaultPanelView.Config);
+            Assert.IsFalse(defaultPanelView.Config.isPopup);
             Assert.IsNotNull(panels);
             Assert.IsTrue(panels.Count > 0);
             
@@ -27,6 +29,14 @@ namespace Game
         private void Start()
         {
             _state.Show(defaultPanelView.Config);
+
+            for (int i = 0; i < panels.Count; i++)
+            {
+                if (panels[i].Config.isPopup)
+                    continue;
+
+                _state.Show(panels[i].Config);
+            }
         }
         
         private void OnEnable()
@@ -37,10 +47,19 @@ namespace Game
 
         private void Render(PanelSO previous, PanelSO current)
         {
-            if(previous!=null)
-                _state.GetPanelGO(previous)?.SetActive(false);
-            if(current!=null)
-                _state.GetPanelGO(current)?.SetActive(true);
+            if (previous != null)
+            {
+                var previousGO = _state.GetPanelGO(previous);
+                if (previousGO != null)
+                    previousGO.SetActive(false);
+            }
+
+            if (current != null)
+            {
+                var currentGO = _state.GetPanelGO(current);
+                if (currentGO != null)
+                    currentGO.SetActive(true);
+            }
         }
         
         private void OnDisable()

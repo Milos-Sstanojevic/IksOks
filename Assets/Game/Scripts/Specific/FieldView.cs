@@ -12,16 +12,16 @@ namespace Game
         public int Index =>index;
         public Image Image =>image;
 
-        private GameplayController _gameplayController;
+        private GameplayState _gameplayState;
 
         private void Awake()
         {
-            _gameplayController = OR.Get<GameplayController>();
+            _gameplayState = OR.Get<GameplayState>();
         }
 
         public void OnClick()
         {
-            _gameplayController.TryPlay(index);
+            _gameplayState.TryPlay(index);
         }
     }
 }

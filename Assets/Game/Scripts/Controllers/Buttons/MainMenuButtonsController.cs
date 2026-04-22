@@ -5,7 +5,6 @@ namespace Game
     public sealed class MainMenuButtonsController : MonoBehaviour
     {
         [SerializeField] private PanelSO startPanel;
-        [SerializeField] private PanelSO settingsPanel;
         [SerializeField] private PanelSO statsPanel;
         [SerializeField] private PanelSO exitPanel;
         
@@ -19,11 +18,6 @@ namespace Game
         public void Play()
         {
             _state.Show(startPanel);
-        }
-
-        public void Settings()
-        {
-            _state.Show(settingsPanel);
         }
 
         public void Stats()

@@ -11,12 +11,13 @@ namespace Game
         public event Action<PanelSO, PanelSO> OnPopupChanged;
 
         private readonly Dictionary<PanelSO, GameObject> _panelMap = new();
+        private readonly HashSet<PanelSO> _activeMainPanels = new();
         private PanelSO _activePopupPanel;
-        private PanelSO _activeMainPanel;
 
         public void Register(PanelView panelView)
         {
             Assert.IsNotNull(panelView);
+            Assert.IsNotNull(panelView.Config);
 
             _panelMap[panelView.Config]=panelView.gameObject;
             panelView.gameObject.SetActive(false);
@@ -25,35 +26,41 @@ namespace Game
         public GameObject GetPanelGO(PanelSO panel)
         {
             Assert.IsNotNull(panel);
-            
-            return _panelMap[panel];
+
+            _panelMap.TryGetValue(panel, out var panelGO);
+            return panelGO;
         }
         
         public void Show(PanelSO panel)
         {
             Assert.IsNotNull(panel);
+            Assert.IsTrue(_panelMap.ContainsKey(panel), $"Panel not registered: {panel.name}");
             if (panel.isPopup)
             {
                 SwitchPopup(panel);
                 return;
             }
 
-            SwitchMain(panel);
-          
+            ShowMain(panel);
+           
         }
 
         private void SwitchPopup(PanelSO panel)
         {
+            if (ReferenceEquals(_activePopupPanel, panel))
+                return;
+
             var previous = _activePopupPanel;
             _activePopupPanel = panel;
             OnPopupChanged?.Invoke(previous, panel);
         }
 
-        private void SwitchMain(PanelSO panel)
-        {  
-            var previous = _activeMainPanel;
-            _activeMainPanel = panel;
-            OnMainChanged?.Invoke(previous, panel);
+        private void ShowMain(PanelSO panel)
+        {
+            if (!_activeMainPanels.Add(panel))
+                return;
+
+            OnMainChanged?.Invoke(null, panel);
         }
 
         public void ClosePopup()
@@ -64,21 +71,22 @@ namespace Game
             OnPopupChanged?.Invoke(previous,null);
         }
 
-        private void CloseMain()
-        {
-            if (_activeMainPanel == null) return;
-            var previous=_activeMainPanel;
-            _activeMainPanel = null;
-            OnMainChanged?.Invoke(previous,null);
-
-        }
-
         public void Reset()
         {
             ClosePopup();
-            CloseMain();
+
+            if (_activeMainPanels.Count > 0)
+            {
+                var mainsToClose = new List<PanelSO>(_activeMainPanels);
+                _activeMainPanels.Clear();
+
+                for (int i = 0; i < mainsToClose.Count; i++)
+                    OnMainChanged?.Invoke(mainsToClose[i], null);
+            }
+
+            _panelMap.Clear();
         }
-        
-       
+
+
     }
 }
