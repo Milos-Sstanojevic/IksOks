@@ -26,7 +26,8 @@ namespace Game
         private readonly int _boardSize;
         private ResultType _result;
         public bool IsGameOver=>_isGameOver;
-        
+        public ResultType Result=>_result;
+
         public GameplayState(BoardState boardState, TurnState turnState)
         {
             _boardState=boardState;
@@ -39,6 +40,7 @@ namespace Game
         public void StartGame()
         {
             _isGameOver=false;
+            _result=ResultType.None;
             _boardState.Reset();
             _turnState.Reset();
             

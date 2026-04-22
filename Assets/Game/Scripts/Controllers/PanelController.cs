@@ -38,7 +38,7 @@ namespace Game
                 _state.Show(panels[i].Config);
             }
         }
-        
+
         private void OnEnable()
         {
             _state.OnPopupChanged += Render;

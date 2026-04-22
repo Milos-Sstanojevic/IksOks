@@ -24,8 +24,8 @@ namespace Game
         public void LoadGameScene()
         {
             _state.Reset();
-            _gameplayState.StartGame();
             SceneManager.LoadScene(GameSceneName);
+            _gameplayState.StartGame();
         }
     }
 }
