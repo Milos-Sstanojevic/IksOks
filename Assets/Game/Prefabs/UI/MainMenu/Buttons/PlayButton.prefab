@@ -271,10 +271,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2448604919952226729}
         m_TargetAssemblyTypeName: Game.ButtonsEffect, Assembly-CSharp
         m_MethodName: PlaySoundEffect
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: 3afe8638cfd4d2941a3df4583db504a6, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -292,4 +292,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cb2eefa5a444289662cf3e7df39f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAudio: {fileID: 8300000, guid: 3afe8638cfd4d2941a3df4583db504a6, type: 3}

@@ -9,7 +9,6 @@ namespace Game
         [SerializeField] private Button button;
         [SerializeField] private Image image;
         
-        public int Index =>index;
         public Image Image =>image;
 
         private GameplayState _gameplayState;

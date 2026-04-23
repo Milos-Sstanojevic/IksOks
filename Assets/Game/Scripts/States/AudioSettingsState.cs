@@ -7,8 +7,8 @@ namespace Game
         public event Action<bool> OnMusicChanged;
         public event Action<bool> OnSFXChanged;
 
-        private bool _musicEnabled;
-        private bool _sfxEnabled;
+        private bool _musicEnabled=true;
+        private bool _sfxEnabled=true;
         
         public bool MusicEnabled => _musicEnabled;
         public bool SFXEnabled => _sfxEnabled;

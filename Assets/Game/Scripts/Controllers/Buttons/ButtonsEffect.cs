@@ -4,7 +4,9 @@ namespace Game
 {
     public sealed class ButtonsEffect : MonoBehaviour
     {
-        [SerializeField] private AudioClip buttonAudio;
+        [SerializeField] private AudioClip xAudio;
+        [SerializeField] private AudioClip oAudio;
+        
         private AudioService _audioService;
 
         private void Awake()
@@ -12,9 +14,14 @@ namespace Game
             _audioService = OR.Get<AudioService>();
         }
         
-        public void PlaySoundEffect()
+        public void PlaySoundEffect(AudioClip audioClip)
         {
-            _audioService.PlaySfx(buttonAudio);
+            _audioService.PlaySfx(audioClip);
+        }
+
+        public void PlayPlacingEffect(BoardState.CellValue value)
+        {
+            _audioService.PlaySfx(value==BoardState.CellValue.X ? xAudio : oAudio);
         }
     }
 }

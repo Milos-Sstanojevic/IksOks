@@ -9,7 +9,7 @@ namespace Game
     {
         [SerializeField] private List<FieldView> fields;
         [SerializeField] private PieceThemeSettings pieceThemeSettings;
-
+        private List<ButtonsEffect> _buttonsEffects;    
         private BoardState _boardState;
         private ThemeState _themeState;
 
@@ -17,6 +17,10 @@ namespace Game
         {
             _boardState=OR.Get<BoardState>();
             _themeState=OR.Get<ThemeState>();
+            _buttonsEffects=new List<ButtonsEffect>();
+            for(int i=0;i<fields.Count;i++)
+                _buttonsEffects.Add(fields[i].GetComponent<ButtonsEffect>());
+            
             Assert.IsTrue(fields.Count == _boardState.OneDimension*_boardState.OneDimension);
         }
 
@@ -52,6 +56,7 @@ namespace Game
             var selectedTheme = _themeState.SelectedTheme;
             image.sprite = pieceThemeSettings.GetThemeSprite(selectedTheme,value);
             image.enabled = true;
+            _buttonsEffects[index].PlayPlacingEffect(value);
         }
 
         private void RenderAll()

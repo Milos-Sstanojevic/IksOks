@@ -14,6 +14,8 @@ namespace Game
         {
             if (_installed)
             {
+                if (audioService != null)
+                    Destroy(audioService.gameObject);
                 Destroy(gameObject);
                 return;
             }
@@ -21,7 +23,6 @@ namespace Game
             _installed = true;
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(audioService.gameObject);
-            SceneManager.LoadScene("Bootstrap", LoadSceneMode.Single);
             
             OR.Init();
             

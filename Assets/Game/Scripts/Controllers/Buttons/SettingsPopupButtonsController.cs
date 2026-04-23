@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
     public sealed class SettingsPopupButtonsController : MonoBehaviour
     {
+        [SerializeField] private Toggle musicToggle;
+        [SerializeField] private Toggle sfxToggle;
         private AudioSettingsState _audioSettingsState;
 
         private void Awake()
@@ -11,14 +14,14 @@ namespace Game
             _audioSettingsState = OR.Get<AudioSettingsState>();
         }
         
-        public void ToggleMusic(bool enabled)
+        public void ToggleMusic()
         {
-            _audioSettingsState.SetMusicEnabled(enabled);
+            _audioSettingsState.SetMusicEnabled(musicToggle.isOn);
         }
 
-        public void ToggleSFX(bool enabled)
+        public void ToggleSFX()
         {
-            _audioSettingsState.SetSFXEnabled(enabled);
+            _audioSettingsState.SetSFXEnabled(sfxToggle.isOn);
         }
     }
 }

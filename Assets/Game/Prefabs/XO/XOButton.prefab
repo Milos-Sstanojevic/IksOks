@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1905349269827337015}
   - component: {fileID: 1184340634233822385}
   - component: {fileID: 1223597036133647432}
+  - component: {fileID: 4541665140194120932}
   m_Layer: 5
   m_Name: XOButton
   m_TagString: Untagged
@@ -119,6 +120,20 @@ MonoBehaviour:
   index: 0
   button: {fileID: 1184340634233822385}
   image: {fileID: 7385702531560260046}
+--- !u!114 &4541665140194120932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049875017731561721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cb2eefa5a444289662cf3e7df39f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAudio: {fileID: 8300000, guid: f48a820585e22ce48b7fc631922a6e40, type: 3}
+  oAudio: {fileID: 8300000, guid: 93d577aea84187647b34d4da78cfddc0, type: 3}
 --- !u!1 &4346481666522462656
 GameObject:
   m_ObjectHideFlags: 0
