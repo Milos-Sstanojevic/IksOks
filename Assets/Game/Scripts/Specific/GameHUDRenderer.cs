@@ -31,16 +31,10 @@ namespace Game
 
         private void Render()
         {
-            timeText.text = FormatTime(_hudState.DurationSeconds);
+            timeText.text = TimeExtension.FormatTime(_hudState.DurationSeconds);
             movesText.text = _hudState.MovesNumber.ToString();
         }
 
-        private static string FormatTime(float elapsedSeconds)
-        {
-            var totalSeconds = Mathf.FloorToInt(elapsedSeconds);
-            var minutes = totalSeconds / 60;
-            var seconds = totalSeconds % 60;
-            return $"{minutes:00}:{seconds:00}";
-        }
+       
     }
 }

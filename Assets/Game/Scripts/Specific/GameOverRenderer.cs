@@ -7,12 +7,15 @@ namespace Game
     public sealed class GameOverRenderer : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI winnerText;
+        [SerializeField] private TextMeshProUGUI durationText;
         
         private GameplayState _gameplayState;
-        
+        private GameHUDState _gameHUDState;
+
         private void Awake()
         {
             _gameplayState=OR.Get<GameplayState>();
+            _gameHUDState=OR.Get<GameHUDState>();
         }
 
         private void OnEnable()
@@ -33,7 +36,8 @@ namespace Game
                 case GameplayState.ResultType.Draw:
                     winnerText.text = "Draw!";
                     break;
-            }   
+            }
+            durationText.text=TimeExtension.FormatTime(_gameHUDState.DurationSeconds);
         }
     }
 }

@@ -6,6 +6,8 @@ namespace Game
     public sealed class AppInstall : MonoBehaviour
     {
         [SerializeField] private ThemeState.ThemeId initialTheme;
+        [SerializeField] private AudioService audioService;
+        [SerializeField] private AudioClip music;
         private static bool _installed;
         
         private void Awake()
@@ -18,6 +20,7 @@ namespace Game
 
             _installed = true;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(audioService.gameObject);
             SceneManager.LoadScene("Bootstrap", LoadSceneMode.Single);
             
             OR.Init();
@@ -27,6 +30,12 @@ namespace Game
             var statsState = new StatsState(saveService.LoadStats());
             saveService.Bind(themeState);
             saveService.Bind(statsState);
+            
+            var audioSettingsState=new AudioSettingsState();
+            OR.Set(audioSettingsState);
+            audioService.Init(audioSettingsState);
+            OR.Set(audioService);
+            audioService.PlayMusic(music);
             
             OR.Set(saveService);
             OR.Set(themeState);
@@ -40,7 +49,7 @@ namespace Game
             var sceneService=new SceneService();
             OR.Set(sceneService);
             OR.Set(new GameHUDState());
-            
+
             
             if (SceneManager.GetActiveScene().name == "Bootstrap")
                 sceneService.LoadMainMenu();
