@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace Game
 {
@@ -24,6 +23,8 @@ namespace Game
         private bool _isGameOver;
         private readonly int _lastLineIndex;
         private readonly int _boardSize;
+        private readonly int _boardCellCount;
+        private int _winningCellsMask;
         private ResultType _result;
         public bool IsGameOver=>_isGameOver;
         public ResultType Result=>_result;
@@ -33,6 +34,7 @@ namespace Game
             _boardState=boardState;
             _turnState=turnState;
             _boardSize=_boardState.OneDimension;
+            _boardCellCount=_boardSize * _boardSize;
             _lastLineIndex=_boardSize - 1;
         }
 
@@ -41,10 +43,19 @@ namespace Game
         {
             _isGameOver=false;
             _result=ResultType.None;
+            _winningCellsMask=0;
             _boardState.Reset();
             _turnState.Reset();
             
             OnGameStarted?.Invoke();
+        }
+
+        public bool IsWinningCell(int index)
+        {
+            if ((uint)index >= (uint)_boardCellCount)
+                return false;
+
+            return (_winningCellsMask & (1 << index)) != 0;
         }
 
         public void TryPlay(int index)
@@ -77,67 +88,89 @@ namespace Game
 
         private bool HasWin(int lastIndex, BoardState.CellValue value)
         {
+            _winningCellsMask=0;
+
             if (value == BoardState.CellValue.Empty)
                 return false;
 
             var row = lastIndex / _boardSize;
             var col = lastIndex % _boardSize;
 
-            if (CheckRow(row, value)) return true;
-            if (CheckColumn(col, value)) return true;
-            if (row == col && CheckMainDiagonal(value)) return true;
-            if (row + col == _lastLineIndex && CheckAntiDiagonal(value)) return true;
+            _winningCellsMask |= GetRowMask(row, value);
+            _winningCellsMask |= GetColumnMask(col, value);
 
-            return false;
+            if (row == col)
+                _winningCellsMask |= GetMainDiagonalMask(value);
+
+            if (row + col == _lastLineIndex)
+                _winningCellsMask |= GetAntiDiagonalMask(value);
+
+            return _winningCellsMask != 0;
         }
 
-        private bool CheckRow(int row, BoardState.CellValue value)
+        private int GetRowMask(int row, BoardState.CellValue value)
         {
             var rowStart = row * _boardSize;
+            var mask = 0;
 
             for (var offset = 0; offset < _boardSize; offset++)
             {
-                if (_boardState.Get(rowStart + offset) != value)
-                    return false;
+                var index = rowStart + offset;
+                if (_boardState.Get(index) != value)
+                    return 0;
+
+                mask |= 1 << index;
             }
 
-            return true;
+            return mask;
         }
 
-        private bool CheckColumn(int col, BoardState.CellValue value)
+        private int GetColumnMask(int col, BoardState.CellValue value)
         {
+            var mask = 0;
+
             for (var offset = 0; offset < _boardSize; offset++)
             {
                 var index = col + offset * _boardSize;
                 if (_boardState.Get(index) != value)
-                    return false;
+                    return 0;
+
+                mask |= 1 << index;
             }
 
-            return true;
+            return mask;
         }
 
-        private bool CheckMainDiagonal(BoardState.CellValue value)
+        private int GetMainDiagonalMask(BoardState.CellValue value)
         {
+            var mask = 0;
+
             for (var offset = 0; offset < _boardSize; offset++)
             {
                 var index = offset * _boardSize + offset;
                 if (_boardState.Get(index) != value)
-                    return false;
+                    return 0;
+
+                mask |= 1 << index;
             }
 
-            return true;
+            return mask;
         }
 
-        private bool CheckAntiDiagonal(BoardState.CellValue value)
+        private int GetAntiDiagonalMask(BoardState.CellValue value)
         {
+            var mask = 0;
+
             for (var offset = 0; offset < _boardSize; offset++)
             {
                 var index = offset * _boardSize + (_lastLineIndex - offset);
                 if (_boardState.Get(index) != value)
-                    return false;
+                    return 0;
+
+                mask |= 1 << index;
             }
 
-            return true;
+            return mask;
         }
     }
 }
