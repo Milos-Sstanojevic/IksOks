@@ -559,7 +559,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatsPopup
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2851628658835471021, guid: 04252855d9fa1c14b8b0b30dfa3811bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -572,6 +573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5288111635405528137}
     m_Modifications:
+    - target: {fileID: 1216830661476707521, guid: e0e7afe6e89e1b244977586f2a38bb74, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.300003
+      objectReference: {fileID: 0}
     - target: {fileID: 3597397619401650087, guid: e0e7afe6e89e1b244977586f2a38bb74, type: 3}
       propertyPath: m_Name
       value: StartGamePopup
@@ -655,6 +660,14 @@ PrefabInstance:
     - target: {fileID: 7404989614450935927, guid: e0e7afe6e89e1b244977586f2a38bb74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325375046603838347, guid: e0e7afe6e89e1b244977586f2a38bb74, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325375046603838347, guid: e0e7afe6e89e1b244977586f2a38bb74, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.399994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -786,38 +799,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5288111635405528137}
     m_Modifications:
-    - target: {fileID: 526670570034668077, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 526670570034668077, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 526670570034668077, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 526670570034668077, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50.4625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4236047990091619223, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4236047990091619223, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4236047990091619223, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 4236047990091619223, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -151.38751
-      objectReference: {fileID: 0}
     - target: {fileID: 5395959072223978384, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -902,8 +883,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsPopup
       objectReference: {fileID: 0}
-    - target: {fileID: 5795901781660751318, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 7563914775566761968, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
+      propertyPath: rotateTo.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563914775566761968, guid: f6b15e5371586644bb3aa2fdef7b05ab, type: 3}
+      propertyPath: isControlledByGroup
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -922,6 +907,14 @@ PrefabInstance:
     - target: {fileID: 2768353536482753817, guid: b0b3630178ac448409a5916c6d25ae06, type: 3}
       propertyPath: m_Name
       value: ExitPopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264369677434421984, guid: b0b3630178ac448409a5916c6d25ae06, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.300003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078832420800811076, guid: b0b3630178ac448409a5916c6d25ae06, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15.69986
       objectReference: {fileID: 0}
     - target: {fileID: 9075521406299972484, guid: b0b3630178ac448409a5916c6d25ae06, type: 3}
       propertyPath: m_Pivot.x
@@ -1140,6 +1133,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7549582902106369607, guid: 09304167423b8df4c9a0941d1d904db7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373900937763717195, guid: 09304167423b8df4c9a0941d1d904db7, type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373900937763717195, guid: 09304167423b8df4c9a0941d1d904db7, type: 3}
+      propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

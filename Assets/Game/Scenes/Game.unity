@@ -692,10 +692,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOver
       objectReference: {fileID: 0}
-    - target: {fileID: 4990008257416428701, guid: 5289fa5a4a08ab7489010199aa56b321, type: 3}
-      propertyPath: gameOverAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 8e7ccfd88763e1d4a8968cbee1b9c8fc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -973,11 +969,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2005195157363161282, guid: 9a3ba1e542a9d2c4aa3cd8baa8f91f90, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2005195157363161282, guid: 9a3ba1e542a9d2c4aa3cd8baa8f91f90, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -100
+      value: -307.09995
       objectReference: {fileID: 0}
     - target: {fileID: 2005195157363161282, guid: 9a3ba1e542a9d2c4aa3cd8baa8f91f90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1013,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2005195157363161282, guid: 9a3ba1e542a9d2c4aa3cd8baa8f91f90, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -103.55003
       objectReference: {fileID: 0}
     - target: {fileID: 2005195157363161282, guid: 9a3ba1e542a9d2c4aa3cd8baa8f91f90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

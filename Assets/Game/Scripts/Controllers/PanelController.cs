@@ -8,7 +8,7 @@ namespace Game
     {
         [SerializeField] private PanelView defaultPanelView;
         [SerializeField] private List<PanelView> panels;
-
+        
         private PanelState _state;
 
         private void Awake()
@@ -49,16 +49,28 @@ namespace Game
         {
             if (previous != null)
             {
-                var previousGO = _state.GetPanelGO(previous);
-                if (previousGO != null)
-                    previousGO.SetActive(false);
+                var previousPanel = _state.GetPanelView(previous);
+                if (previousPanel != null)
+                {
+                    var animatedElement = previousPanel.AnimatedElement;
+                    if (animatedElement != null)
+                        previousPanel.AnimatedElement.HideElement();
+                    else
+                        previousPanel.gameObject.SetActive(false);
+                }
             }
 
             if (current != null)
             {
-                var currentGO = _state.GetPanelGO(current);
-                if (currentGO != null)
-                    currentGO.SetActive(true);
+                var currentPanel = _state.GetPanelView(current);
+                if (currentPanel != null)
+                {
+                    var animatedElement=currentPanel.AnimatedElement;
+                    if(animatedElement!=null)
+                        animatedElement.ShowElement();
+                    else
+                        currentPanel.gameObject.SetActive(true);
+                }
             }
         }
         

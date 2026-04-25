@@ -10,7 +10,7 @@ namespace Game
         public event Action<PanelSO,PanelSO> OnMainChanged;
         public event Action<PanelSO, PanelSO> OnPopupChanged;
 
-        private readonly Dictionary<PanelSO, GameObject> _panelMap = new();
+        private readonly Dictionary<PanelSO, PanelView> _panelMap = new();
         private readonly HashSet<PanelSO> _activeMainPanels = new();
         private PanelSO _activePopupPanel;
 
@@ -19,16 +19,16 @@ namespace Game
             Assert.IsNotNull(panelView);
             Assert.IsNotNull(panelView.Config);
 
-            _panelMap[panelView.Config]=panelView.gameObject;
+            _panelMap[panelView.Config]=panelView;
             panelView.gameObject.SetActive(false);
         }
 
-        public GameObject GetPanelGO(PanelSO panel)
+        public PanelView GetPanelView(PanelSO panel)
         {
             Assert.IsNotNull(panel);
 
-            _panelMap.TryGetValue(panel, out var panelGO);
-            return panelGO;
+            _panelMap.TryGetValue(panel, out var panelView);
+            return panelView;
         }
         
         public void Show(PanelSO panel)

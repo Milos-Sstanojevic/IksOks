@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 6300071808820643204}
   - component: {fileID: 3233826151944527946}
   - component: {fileID: 1848397588951819175}
+  - component: {fileID: 1237871936383150653}
   m_Layer: 5
   m_Name: ExitPopup
   m_TagString: Untagged
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelConfig: {fileID: 11400000, guid: 538777972effcce44866661f1796df5c, type: 2}
+  animatedElement: {fileID: 1237871936383150653}
 --- !u!114 &3233826151944527946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +358,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecd4afc1faa4dc59f9256182363f09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1237871936383150653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768353536482753817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8dff8c7bdaea24098c5c167c761c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isControlledByGroup: 0
+  group: {fileID: 0}
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  disableShowAnimation: 0
+  disableHideAnimation: 0
+  containerCanvas: {fileID: 0}
+  animateOnEnable: 1
+  showTimeMode: 0
+  hideTimeMode: 0
+  showAnimationType: 0
+  hideAnimationType: 0
+  animationMoveFrom: 0
+  animationMoveTo: 0
+  addBounciness: 1
+  bouncinessPower: 0.1
+  bouncinessDuration: 0.1
+  fadeChildren: 0
+  animationShowDuration: 0.25
+  animationHideDuration: 0.25
+  delayEnabled: 0
+  showDelay: 0
+  hideDelay: 0
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
+  worldPosition_initial: {x: 0, y: 0, z: 0}
+  localPosition_initial: {x: 0, y: 0, z: 0}
+  anchoredPosition_initial: {x: 0, y: 0, z: 0}
+  childrenColors_initial: []
+  scale_initial: {x: 0, y: 0, z: 0}
+  rotation_initial: {x: 0, y: 0, z: 0, w: 0}
+  pivot_initial: {x: 0, y: 0}
 --- !u!1 &3188276274285437496
 GameObject:
   m_ObjectHideFlags: 0

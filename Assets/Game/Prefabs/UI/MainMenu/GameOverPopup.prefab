@@ -423,8 +423,9 @@ GameObject:
   - component: {fileID: 5333640221361002542}
   - component: {fileID: 4990008257416428701}
   - component: {fileID: 8240511078205332516}
+  - component: {fileID: 3327519954800020678}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: GameOverPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelConfig: {fileID: 11400000, guid: 865f415be55968344bf8f3211e618118, type: 2}
+  animatedElement: {fileID: 3327519954800020678}
 --- !u!114 &4990008257416428701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winnerText: {fileID: 1742214348497155634}
   durationText: {fileID: 7351245990199344587}
+  gameOverAudio: {fileID: 8300000, guid: 8e7ccfd88763e1d4a8968cbee1b9c8fc, type: 3}
 --- !u!114 &8240511078205332516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +531,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753059acd4754a49ae4bf89030ac8e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3327519954800020678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897971904799566609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8dff8c7bdaea24098c5c167c761c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isControlledByGroup: 0
+  group: {fileID: 0}
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  disableShowAnimation: 0
+  disableHideAnimation: 0
+  containerCanvas: {fileID: 0}
+  animateOnEnable: 1
+  showTimeMode: 0
+  hideTimeMode: 0
+  showAnimationType: 0
+  hideAnimationType: 0
+  animationMoveFrom: 0
+  animationMoveTo: 0
+  addBounciness: 1
+  bouncinessPower: 0.1
+  bouncinessDuration: 0.1
+  fadeChildren: 0
+  animationShowDuration: 0.25
+  animationHideDuration: 0.25
+  delayEnabled: 0
+  showDelay: 0
+  hideDelay: 0
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
+  worldPosition_initial: {x: 0, y: 0, z: 0}
+  localPosition_initial: {x: 0, y: 0, z: 0}
+  anchoredPosition_initial: {x: 0, y: 0, z: 0}
+  childrenColors_initial: []
+  scale_initial: {x: 0, y: 0, z: 0}
+  rotation_initial: {x: 0, y: 0, z: 0, w: 0}
+  pivot_initial: {x: 0, y: 0}
 --- !u!1 &6128984149327313556
 GameObject:
   m_ObjectHideFlags: 0

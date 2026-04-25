@@ -1285,9 +1285,9 @@ GameObject:
   - component: {fileID: 1040176997969123691}
   - component: {fileID: 7884522506441831280}
   - component: {fileID: 8416039269409227744}
-  - component: {fileID: 2851628658835471021}
   - component: {fileID: 7637676316179861944}
   - component: {fileID: 1385560326761056112}
+  - component: {fileID: 3053960936577188310}
   m_Layer: 5
   m_Name: StatsPopup
   m_TagString: Untagged
@@ -1339,18 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelConfig: {fileID: 11400000, guid: 897fcb51c40a67a4a90a239ddfd0eed2, type: 2}
---- !u!114 &2851628658835471021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6366078643967893113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce2d68f15b904447b2752c0be642027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  animatedElement: {fileID: 3053960936577188310}
 --- !u!114 &7637676316179861944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,6 +1368,60 @@ MonoBehaviour:
   perPlayerWinText: {fileID: 8311197591709863523}
   numberOfDrawsText: {fileID: 8103917388387213495}
   averageDurationText: {fileID: 8480261411573979660}
+--- !u!114 &3053960936577188310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366078643967893113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8dff8c7bdaea24098c5c167c761c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isControlledByGroup: 0
+  group: {fileID: 0}
+  OnShow:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHide:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShowComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHideComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  disableShowAnimation: 0
+  disableHideAnimation: 0
+  containerCanvas: {fileID: 0}
+  animateOnEnable: 1
+  showTimeMode: 0
+  hideTimeMode: 0
+  showAnimationType: 0
+  hideAnimationType: 0
+  animationMoveFrom: 0
+  animationMoveTo: 0
+  addBounciness: 1
+  bouncinessPower: 0.1
+  bouncinessDuration: 0.1
+  fadeChildren: 0
+  animationShowDuration: 0.25
+  animationHideDuration: 0.25
+  delayEnabled: 0
+  showDelay: 0
+  hideDelay: 0
+  rotateFrom: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 0, y: 0, z: 0}
+  worldPosition_initial: {x: 0, y: 0, z: 0}
+  localPosition_initial: {x: 0, y: 0, z: 0}
+  anchoredPosition_initial: {x: 0, y: 0, z: 0}
+  childrenColors_initial: []
+  scale_initial: {x: 0, y: 0, z: 0}
+  rotation_initial: {x: 0, y: 0, z: 0, w: 0}
+  pivot_initial: {x: 0, y: 0}
 --- !u!1 &7510578509866171558
 GameObject:
   m_ObjectHideFlags: 0
