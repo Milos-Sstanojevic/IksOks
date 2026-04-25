@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 namespace Game
@@ -11,7 +12,22 @@ namespace Game
 
         private void Awake()
         {
+            Assert.IsNotNull(musicToggle);
+            Assert.IsNotNull(sfxToggle);
             _audioSettingsState = OR.Get<AudioSettingsState>();
+            SyncToggles();
+        }
+
+        private void OnEnable()
+        {
+            SyncToggles();
+        }
+
+        private void SyncToggles()
+        {
+            Assert.IsNotNull(_audioSettingsState);
+            musicToggle.SetIsOnWithoutNotify(_audioSettingsState.MusicEnabled);
+            sfxToggle.SetIsOnWithoutNotify(_audioSettingsState.SfxEnabled);
         }
         
         public void ToggleMusic()
@@ -21,7 +37,7 @@ namespace Game
 
         public void ToggleSFX()
         {
-            _audioSettingsState.SetSFXEnabled(sfxToggle.isOn);
+            _audioSettingsState.SetSfxEnabled(sfxToggle.isOn);
         }
     }
 }

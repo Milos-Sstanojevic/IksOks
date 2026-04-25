@@ -32,9 +32,13 @@ namespace Game
             saveService.Bind(themeState);
             saveService.Bind(statsState);
             
-            var audioSettingsState=new AudioSettingsState();
+            var audioSettingsState=new AudioSettingsState(saveService.LoadMusicEnabled(), saveService.LoadSfxEnabled());
+            saveService.Bind(audioSettingsState);
+            var musicVolumeDb=saveService.LoadMusicMixerDb(audioSettingsState.MusicEnabled);
+            var sfxVolumeDb=saveService.LoadSfxMixerDb(audioSettingsState.SfxEnabled);
+            saveService.Bind(audioService);
             OR.Set(audioSettingsState);
-            audioService.Init(audioSettingsState);
+            audioService.Init(audioSettingsState, musicVolumeDb, sfxVolumeDb);
             OR.Set(audioService);
             audioService.PlayMusic(music);
             

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Audio;
@@ -14,19 +15,28 @@ namespace Game
         [SerializeField] private AudioMixerGroup sfxAudioMixer;
         [SerializeField] private AudioSource musicSource;
         [SerializeField] private AudioSource sfxSource;
+
+        public event Action<float> OnMusicVolumeDbChanged;
+        public event Action<float> OnSfxVolumeDbChanged;
         
         private AudioSettingsState _audioSettingsState;
         private AudioClip _currentMusicClip;
 
-        public void Init(AudioSettingsState audioSettingsState)
+        public void Init(AudioSettingsState audioSettingsState, float musicVolumeDb, float sfxVolumeDb)
         {
             Assert.IsNotNull(audioSettingsState);
+            Assert.IsNotNull(musicAudioMixer);
+            Assert.IsNotNull(sfxAudioMixer);
+            Assert.IsNotNull(musicSource);
+            Assert.IsNotNull(sfxSource);
+
             _audioSettingsState=audioSettingsState;
 
             _audioSettingsState.OnMusicChanged += OnMusicChanged;
-            _audioSettingsState.OnSFXChanged += OnSfxChanged;
+            _audioSettingsState.OnSfxChanged += OnSfxChanged;
 
-            ApplySettings();
+            SetMusicVolume(musicVolumeDb, false);
+            SetSfxVolume(sfxVolumeDb, false);
         }
 
         public void PlaySfx(AudioClip clip, float volumeScale = 1f)
@@ -47,24 +57,43 @@ namespace Game
 
         private void OnMusicChanged(bool enabled)
         {
-            musicAudioMixer.audioMixer.SetFloat(musicParamether, enabled ? enabledDb : mutedDb);
+            SetMusicVolume(enabled ? enabledDb : mutedDb);
         }
 
         private void OnSfxChanged(bool enabled)
         {
-            sfxAudioMixer.audioMixer.SetFloat(sfxParamether,enabled ? enabledDb : mutedDb);
+            SetSfxVolume(enabled ? enabledDb : mutedDb);
         }
-        
-        private void ApplySettings()
+
+        private void SetMusicVolume(float valueDb, bool notify = true)
         {
-            OnMusicChanged(_audioSettingsState.MusicEnabled);
-            OnSfxChanged(_audioSettingsState.SFXEnabled);
+            musicAudioMixer.audioMixer.SetFloat(musicParamether, valueDb);
+            musicSource.mute = valueDb <= mutedDb;
+
+            if (!notify)
+                return;
+
+            OnMusicVolumeDbChanged?.Invoke(valueDb);
+        }
+
+        private void SetSfxVolume(float valueDb, bool notify = true)
+        {
+            sfxAudioMixer.audioMixer.SetFloat(sfxParamether, valueDb);
+            sfxSource.mute = valueDb <= mutedDb;
+
+            if (!notify)
+                return;
+
+            OnSfxVolumeDbChanged?.Invoke(valueDb);
         }
 
         private void OnDestroy()
         {
+            if (_audioSettingsState == null)
+                return;
+
             _audioSettingsState.OnMusicChanged -= OnMusicChanged;
-            _audioSettingsState.OnSFXChanged -= OnSfxChanged;
+            _audioSettingsState.OnSfxChanged -= OnSfxChanged;
         }
         
 

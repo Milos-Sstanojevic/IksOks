@@ -4,7 +4,14 @@ namespace Game
 {
     public sealed class SaveService
     {
+        private const float EnabledDb = 0f;
+        private const float MutedDb = -80f;
+
         private const string ThemeKey = "theme.selected";
+        private const string AudioMusicEnabledKey = "audio.music_enabled";
+        private const string AudioSFXEnabledKey = "audio.sfx_enabled";
+        private const string AudioMusicMixerDbKey = "audio.music_mixer_db";
+        private const string AudioSfxMixerDbKey = "audio.sfx_mixer_db";
         
         private const string StatsTotalGamesKey = "stats.total_games";
         private const string StatsPlayer1WinsKey = "stats.player1_wins";
@@ -20,9 +27,59 @@ namespace Game
             return (ThemeState.ThemeId) PlayerPrefs.GetInt(ThemeKey);
         }
 
-        public void SaveTheme(ThemeState.ThemeId theme)
+        private void SaveTheme(ThemeState.ThemeId theme)
         {
             PlayerPrefs.SetInt(ThemeKey, (int) theme);
+            PlayerPrefs.Save();
+        }
+
+        public bool LoadMusicEnabled(bool initialValue = true)
+        {
+            if (!PlayerPrefs.HasKey(AudioMusicEnabledKey))
+                return initialValue;
+
+            return PlayerPrefs.GetInt(AudioMusicEnabledKey) == 1;
+        }
+
+        public bool LoadSfxEnabled(bool initialValue = true)
+        {
+            if (!PlayerPrefs.HasKey(AudioSFXEnabledKey))
+                return initialValue;
+
+            return PlayerPrefs.GetInt(AudioSFXEnabledKey) == 1;
+        }
+
+        public float LoadMusicMixerDb(bool musicEnabled)
+        {
+            return PlayerPrefs.GetFloat(AudioMusicMixerDbKey, musicEnabled ? EnabledDb : MutedDb);
+        }
+
+        public float LoadSfxMixerDb(bool sfxEnabled)
+        {
+            return PlayerPrefs.GetFloat(AudioSfxMixerDbKey, sfxEnabled ? EnabledDb : MutedDb);
+        }
+
+        private void SaveMusicEnabled(bool enabled)
+        {
+            PlayerPrefs.SetInt(AudioMusicEnabledKey, enabled ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+
+        private void SaveSfxEnabled(bool enabled)
+        {
+            PlayerPrefs.SetInt(AudioSFXEnabledKey, enabled ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+
+        private void SaveMusicMixerDb(float valueDb)
+        {
+            PlayerPrefs.SetFloat(AudioMusicMixerDbKey, valueDb);
+            PlayerPrefs.Save();
+        }
+
+        private void SaveSfxMixerDb(float valueDb)
+        {
+            PlayerPrefs.SetFloat(AudioSfxMixerDbKey, valueDb);
             PlayerPrefs.Save();
         }
 
@@ -38,7 +95,7 @@ namespace Game
             };
         }
 
-        public void SaveStats(StatsState.Data data)
+        private void SaveStats(StatsState.Data data)
         {
             PlayerPrefs.SetInt(StatsTotalGamesKey, data.totalGames);
             PlayerPrefs.SetInt(StatsPlayer1WinsKey, data.player1Wins);
@@ -52,6 +109,18 @@ namespace Game
         {
             themeState.OnChanged+=SaveTheme;
         }
+
+        public void Bind(AudioSettingsState audioSettingsState)
+        {
+            audioSettingsState.OnMusicChanged += SaveMusicEnabled;
+            audioSettingsState.OnSfxChanged += SaveSfxEnabled;
+        }
+
+        public void Bind(AudioService audioService)
+        {
+            audioService.OnMusicVolumeDbChanged += SaveMusicMixerDb;
+            audioService.OnSfxVolumeDbChanged += SaveSfxMixerDb;
+        }
         
         public void Bind(StatsState statsState)
         {
@@ -61,6 +130,18 @@ namespace Game
         public void Unbind(ThemeState themeState)
         {
             themeState.OnChanged-=SaveTheme;
+        }
+
+        public void Unbind(AudioSettingsState audioSettingsState)
+        {
+            audioSettingsState.OnMusicChanged -= SaveMusicEnabled;
+            audioSettingsState.OnSfxChanged -= SaveSfxEnabled;
+        }
+
+        public void Unbind(AudioService audioService)
+        {
+            audioService.OnMusicVolumeDbChanged -= SaveMusicMixerDb;
+            audioService.OnSfxVolumeDbChanged -= SaveSfxMixerDb;
         }
 
         public void Unbind(StatsState statsState)
