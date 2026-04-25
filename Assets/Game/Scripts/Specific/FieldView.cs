@@ -8,8 +8,11 @@ namespace Game
         [SerializeField] private int index;
         [SerializeField] private Button button;
         [SerializeField] private Image image;
+        [SerializeField] private ParticleSystem placingPfx;
+        
         
         public Image Image =>image;
+        public ParticleSystem PlacingPfx =>placingPfx;
 
         private GameplayState _gameplayState;
 

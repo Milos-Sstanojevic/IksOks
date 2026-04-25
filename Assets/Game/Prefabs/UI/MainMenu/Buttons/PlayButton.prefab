@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 7982776847105935419}
   - component: {fileID: 7779886392993451943}
   - component: {fileID: 2448604919952226729}
+  - component: {fileID: 7586561865203611574}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -280,6 +281,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7586561865203611574}
+        m_TargetAssemblyTypeName: MONStudiosLLC.ButtonEffects.ButtonEffects, Assembly-CSharp
+        m_MethodName: Press20Bounce
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4168795322385296562}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2448604919952226729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,5 +303,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57cb2eefa5a444289662cf3e7df39f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAudio: {fileID: 0}
+  oAudio: {fileID: 0}
+--- !u!114 &7586561865203611574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203011693897675118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c826acdc5ab91488687d91980b42a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
