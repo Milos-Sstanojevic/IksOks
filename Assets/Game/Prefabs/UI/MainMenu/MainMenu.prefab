@@ -58,8 +58,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: -12.01
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 2477908005708232217}
   - component: {fileID: 8204601044935874955}
   - component: {fileID: 3918953387748393599}
+  - component: {fileID: 5423257643789653643}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelConfig: {fileID: 11400000, guid: 0d87c82370974444e8547bbd359b9a6b, type: 2}
+  animatedElement: {fileID: 0}
 --- !u!114 &3918953387748393599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +143,21 @@ MonoBehaviour:
   startPanel: {fileID: 11400000, guid: 97216fb0e179eb74497d02c1ee58ac79, type: 2}
   statsPanel: {fileID: 11400000, guid: 897fcb51c40a67a4a90a239ddfd0eed2, type: 2}
   exitPanel: {fileID: 11400000, guid: 538777972effcce44866661f1796df5c, type: 2}
+--- !u!114 &5423257643789653643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4048188046392637486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1001 &1490812470861872589
 PrefabInstance:
   m_ObjectHideFlags: 0

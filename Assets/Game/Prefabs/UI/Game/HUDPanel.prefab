@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 1705507131909311290}
   - component: {fileID: 1517940074507947208}
   - component: {fileID: 3206474364542129875}
+  - component: {fileID: 3140773019636734022}
   m_Layer: 5
   m_Name: HUDPanel
   m_TagString: Untagged
@@ -440,6 +441,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelConfig: {fileID: 11400000, guid: 27ab98298dfc47946996b46d556473e3, type: 2}
+  animatedElement: {fileID: 0}
+--- !u!114 &3140773019636734022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943789032480298618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1 &4167887443959785449
 GameObject:
   m_ObjectHideFlags: 0

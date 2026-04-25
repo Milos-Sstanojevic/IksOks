@@ -971,7 +971,7 @@ MonoBehaviour:
   showDelay: 0
   hideDelay: 0
   rotateFrom: {x: 0, y: 0, z: 0}
-  rotateTo: {x: 0, y: 0, z: 0}
+  rotateTo: {x: 90, y: 0, z: 0}
   worldPosition_initial: {x: 0, y: 0, z: 0}
   localPosition_initial: {x: 0, y: 0, z: 0}
   anchoredPosition_initial: {x: 0, y: 0, z: 0}
